@@ -6,15 +6,23 @@ import { useEffect } from "react";
 import * as THREE from "three";
 import { Character } from "./Character";
 import { InvasionEnvironment } from "./Invasion_environment";
-import { PakistanFlag } from "./Pakistan_flag";
 import AtmosphericEffects from "./AtmosphericEffects";
 import keyboardMap from "../data/keyboardMap.json";
 import animationSet from "../data/animationSet.json";
+import { QuestionBox } from './QuestionBox'; // <-- Impor komponen baru
+import { useGameStore } from '../stores/useGameStore'; // <-- Impor store
+import { useState } from 'react';
 
 useLoader.preload(THREE.TextureLoader, "/models/Textures/sky.jpg");
 
 const Experience = ({ shadows }: { shadows: boolean }) => {
   const characterURL = "/models/character.glb";
+  
+  // =================== PERUBAHAN DIMULAI DI SINI ===================
+  // Ambil data pertanyaan dan index kotak yang terlihat dari store
+  const questions = useGameStore((state) => state.questions);
+  const visibleBoxIndex = useGameStore((state) => state.visibleBoxIndex);
+  // =================== PERUBAHAN SELESAI DI SINI ===================
 
   const texture = useLoader(THREE.TextureLoader, "/models/Textures/sky.jpg");
   texture.mapping = THREE.EquirectangularReflectionMapping;
@@ -32,29 +40,35 @@ const Experience = ({ shadows }: { shadows: boolean }) => {
         loop
         autoplay
       />
-      <ambientLight intensity={1} />
+      <ambientLight intensity={0.7} color="#b8d0ff" />
       <directionalLight
-        intensity={1.2}
+        intensity={1.5}
         castShadow
-        position={[-15, 25, 15]}
-        shadow-mapSize={[4096, 4096]}
-        shadow-camera-far={60}
+        position={[-30, 40, 30]}
+        shadow-mapSize={[8192, 8192]}
+        shadow-camera-far={120}
         shadow-camera-near={0.1}
-        shadow-camera-left={-30}
-        shadow-camera-right={30}
-        shadow-camera-top={30}
-        shadow-camera-bottom={-30}
-        shadow-bias={-0.0005}
-        color="#ffd0b8"
+        shadow-camera-left={-60}
+        shadow-camera-right={60}
+        shadow-camera-top={60}
+        shadow-camera-bottom={-60}
+        shadow-bias={-0.0002}
+        color="#fffbe8"
       />
       <spotLight
-        position={[0, 31, -1]}
-        angle={0.6}
-        penumbra={0.5}
-        intensity={2}
-        color="#00ff88"
+        position={[0, 50, 0]}
+        angle={0.7}
+        penumbra={0.7}
+        intensity={2.5}
+        color="#fff7e0"
         castShadow
-        shadow-mapSize={[2048, 2048]}
+        shadow-mapSize={[4096, 4096]}
+      />
+      <pointLight
+        position={[0, 10, 0]}
+        intensity={0.5}
+        color="#ffeedd"
+        castShadow
       />
       {/* Atmospheric Effects */}
       <AtmosphericEffects />
@@ -65,8 +79,6 @@ const Experience = ({ shadows }: { shadows: boolean }) => {
             scale={1}
             position={[0, 0, 0]}
           />
-          <PakistanFlag position={[2.68, -0.25, -18.12]} scale={3.9} />
-          <PakistanFlag position={[-2.63, -0.25, -18.12]} scale={3.9} />
         </RigidBody>
         <KeyboardControls map={keyboardMap}>
           <Ecctrl
@@ -93,9 +105,41 @@ const Experience = ({ shadows }: { shadows: boolean }) => {
             </EcctrlAnimation>
           </Ecctrl>
         </KeyboardControls>
+
+        {/* Render hanya kotak pertanyaan yang sesuai visibleBoxIndex */}
+        {visibleBoxIndex < questions.length ? (
+          questions
+            .filter((q) => q.id === visibleBoxIndex)
+            .map((q) => (
+              <QuestionBox key={q.id} position={q.position} questionId={q.id} />
+            ))
+        ) : (
+          <EndGameModal />
+        )}
+
       </Physics>
     </>
   );
 };
+
+
+function EndGameModal() {
+  const score = useGameStore((state) => state.score);
+  return (
+    <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-80 flex flex-col justify-center items-center z-50">
+      <div className="bg-white text-gray-900 p-10 rounded-lg shadow-2xl flex flex-col items-center">
+        <h1 className="text-3xl font-bold mb-4">Selamat!</h1>
+        <p className="text-xl mb-2">Kamu telah menyelesaikan semua tantangan 🎉</p>
+        <p className="text-lg mb-6">Skor akhir: <span className="font-bold">{score}</span></p>
+        <button
+          className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded"
+          onClick={() => window.location.reload()}
+        >
+          Main Lagi
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export default Experience;

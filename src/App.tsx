@@ -9,6 +9,8 @@ import ZombieLoadingScreen from "./components/ZombieLoadingScreen";
 import { EcctrlJoystick } from "ecctrl";
 import SettingsModal from "./components/SettingsModal";
 import { Stats } from "@react-three/drei";
+import { useGameStore } from './stores/useGameStore'; // <-- Impor store
+import { QuestionModal } from './components/QuestionModal'; // <-- Impor modal
 
 // Loading fallback component that tracks progress
 const LoadingFallback: React.FC = () => {
@@ -36,6 +38,9 @@ const App: React.FC = () => {
   const [loadingProgress, setLoadingProgress] = useState(0);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  
+  // Ambil state yang dibutuhkan untuk UI dari store
+  const { score, currentClue } = useGameStore();
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -153,6 +158,14 @@ const App: React.FC = () => {
 
   return (
     <>
+      {/* =================== PERUBAHAN DIMULAI DI SINI =================== */}
+
+      {/* --- UI UNTUK SKOR DAN PETUNJUK --- */}
+      <div className="absolute top-4 left-4 z-10 bg-black bg-opacity-50 text-white p-4 rounded-lg font-mono">
+        <h3 className="font-bold text-xl">Skor: {score}</h3>
+        <p className="mt-2 text-sm max-w-xs">Petunjuk: {currentClue}</p>
+      </div>
+
       {isMobile() && <EcctrlJoystick buttonNumber={1} />}
 
       <Canvas
@@ -175,6 +188,11 @@ const App: React.FC = () => {
           <Experience shadows={shadows} />
         </Suspense>
       </Canvas>
+      
+      {/* --- RENDER MODAL PERTANYAAN --- */}
+      <QuestionModal />
+      
+      {/* =================== PERUBAHAN SELESAI DI SINI =================== */}
     </>
   );
 };

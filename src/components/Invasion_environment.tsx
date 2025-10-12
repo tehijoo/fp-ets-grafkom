@@ -211,6 +211,7 @@ export function InvasionEnvironment({
                 geometry={nodes.ground.geometry}
                 material={materials.ground_block}
                 position={[-27.83, 69.149, -25.04]}
+                receiveShadow
               />
             </group>
             <group name="Buildings">
@@ -402,17 +403,23 @@ export function InvasionEnvironment({
                 name="Decor_07"
                 geometry={nodes.Decor_07.geometry}
                 material={materials.city_tex}
+                castShadow
+                receiveShadow
               />
               <group name="Decor_08">
                 <mesh
                   name="Decor_08_1"
                   geometry={nodes.Decor_08_1.geometry}
                   material={materials.city_tex}
+                  castShadow
+                  receiveShadow
                 />
                 <mesh
                   name="Decor_08_2"
                   geometry={nodes.Decor_08_2.geometry}
                   material={materials.police_station_tex}
+                  castShadow
+                  receiveShadow
                 />
               </group>
             </group>

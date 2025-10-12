@@ -71,12 +71,16 @@ export function Character(props: React.JSX.IntrinsicElements["group"]) {
             geometry={nodes["body-mesh"].geometry}
             material={materials.colormap}
             skeleton={nodes["body-mesh"].skeleton}
+            castShadow
+            receiveShadow
           />
           <skinnedMesh
             name="head-mesh"
             geometry={nodes["head-mesh"].geometry}
             material={materials.colormap}
             skeleton={nodes["head-mesh"].skeleton}
+            castShadow
+            receiveShadow
           />
         </group>
       </group>

@@ -4,18 +4,12 @@ interface StartMenuProps {
   onStart?: () => void;
   onControls?: () => void;
   onSettings?: () => void;
-  onGitHub?: () => void;
 }
 
 export default function ZombieInvasionMenu({
   onStart = () => console.log("Start Game"),
   onControls = () => console.log("Controls"),
   onSettings = () => console.log("Settings"),
-  onGitHub = () =>
-    window.open(
-      "https://github.com/abdulrehmanwaseem/3d-Zombie-Invasion-Game",
-      "_blank"
-    ),
 }: StartMenuProps) {
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -29,7 +23,6 @@ export default function ZombieInvasionMenu({
     { id: "start", label: "Start Game", action: onStart, primary: true },
     { id: "controls", label: "Controls Guide", action: onControls },
     { id: "settings", label: "Settings", action: onSettings },
-    { id: "github", label: "Go to GitHub", action: onGitHub }, // Replaced quit button with GitHub link
   ];
 
   return (
@@ -72,16 +65,8 @@ export default function ZombieInvasionMenu({
                 textShadow: "2px 2px 4px rgba(0,0,0,0.8)",
               }}
             >
-              GAME MADE BY
+              permainan dibuat oleh Alya, Indhira dan Cholipah
             </p>
-            <h2
-              className="mb-2 text-xl sm:text-2xl md:text-3xl font-black text-white tracking-wider"
-              style={{
-                textShadow: "3px 3px 6px rgba(0,0,0,0.8)",
-              }}
-            >
-              ABDUL REHMAN
-            </h2>
             <h1
               className="relative mb-1"
               style={{
@@ -100,28 +85,7 @@ export default function ZombieInvasionMenu({
                   textShadow: "4px 4px 8px rgba(0,0,0,0.5)",
                 }}
               >
-                ZOMBIE
-              </span>
-            </h1>
-            <h1
-              className="relative"
-              style={{
-                fontSize: "clamp(2.5rem, 8vw, 5.5rem)",
-                fontWeight: "900",
-                lineHeight: "0.9",
-                letterSpacing: "0.02em",
-              }}
-            >
-              <span
-                className="relative z-10"
-                style={{
-                  color: "#2563eb",
-                  WebkitTextStroke: "4px white",
-                  paintOrder: "stroke fill",
-                  textShadow: "4px 4px 8px rgba(0,0,0,0.5)",
-                }}
-              >
-                INVASION
+                MISI DETEKTIF
               </span>
             </h1>
           </div>
