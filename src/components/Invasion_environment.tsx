@@ -4,16 +4,44 @@ Command: npx gltfjsx@6.5.3 .\public\models\invasion_environment.glb -t
 */
 
 import { Edges, useAnimations, useGLTF } from "@react-three/drei";
-import { useLoader } from "@react-three/fiber";
-import React, { useEffect } from "react";
+import { useLoader, useFrame } from "@react-three/fiber";
+import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import type { GLTF } from "three-stdlib";
-type ActionName = "ufo_01";
+import { Mesh, ConeGeometry, MeshBasicMaterial } from "three";
 
+// =========================================================================
+// 1. Definisikan UFOBeam DI SINI (tetap di atas)
+// Tugasnya HANYA membuat cahaya. Posisinya relatif terhadap induknya.
+// =========================================================================
+export const UFOBeam: React.FC = (): React.JSX.Element => {
+  const beamRef = useRef<Mesh<ConeGeometry, MeshBasicMaterial> | null>(null);
+  useFrame((state) => {
+    const mesh = beamRef.current;
+    if (mesh) {
+      mesh.rotation.y += 0.01;
+      mesh.material.opacity = 0.3 + Math.sin(state.clock.elapsedTime * 2) * 0.2;
+    }
+  });
+
+  return (
+    <mesh ref={beamRef} position={[0, -15, 0]}>
+      <coneGeometry args={[8, 30, 32, 1, true]} />
+      <meshBasicMaterial
+        color="#00ff88"
+        transparent
+        opacity={0.3}
+        side={THREE.DoubleSide}
+        blending={THREE.AdditiveBlending}
+      />
+    </mesh>
+  );
+};
+
+type ActionName = "ufo_01";
 interface GLTFAction extends THREE.AnimationClip {
   name: ActionName;
 }
-
 type GLTFResult = GLTF & {
   nodes: {
     UFO: THREE.Mesh;
@@ -91,13 +119,44 @@ export function InvasionEnvironment({
   ) as unknown as GLTFResult;
   const { actions } = useAnimations(animations, group);
 
+  // Ganti ref ini agar menunjuk ke Group, bukan Mesh
+  const ufoRef = React.useRef<THREE.Group>(null!);
+
   const bannerTex = useLoader(
     THREE.TextureLoader,
     "/models/Textures/ZombieInvasionBanner.png"
   );
 
+  useFrame((state) => {
+    const time = state.clock.getElapsedTime();
+    if (ufoRef.current) {
+      // 1. Tentukan berapa lama UFO akan diam (dalam detik)
+      const hoverDuration = 2.5; // Diam selama 2.5 detik
+
+      // 2. FASE DIAM (HOVER)
+      // Selama waktu kurang dari hoverDuration, UFO tidak bergerak dari posisi awalnya.
+      // Ini memberi waktu bagi polisi untuk jatuh.
+      if (time < hoverDuration) {
+        // Tidak melakukan apa-apa, biarkan UFO di posisi awalnya
+      } 
+      // 3. FASE TERBANG
+      // Setelah waktu hover selesai, UFO mulai terbang.
+      else {
+        // Hitung waktu terbang setelah masa hover selesai
+        const flightTime = time - hoverDuration;
+        // Mulai pergerakan dari posisi awal (-5), bukan dari -40
+        ufoRef.current.position.x = -5 + flightTime * 8; // Kecepatan bisa diatur di sini (misal * 8)
+
+        // Hentikan gerakan setelah mencapai titik tertentu
+        if (ufoRef.current.position.x > 50) {
+          ufoRef.current.position.x = 50;
+        }
+      }
+    }
+  });
+
   useEffect(() => {
-    actions.ufo_01?.play();
+    // actions.ufo_01?.play();
 
     if (!shadows) return;
 
@@ -124,13 +183,16 @@ export function InvasionEnvironment({
           <group name="invasion">
             <group name="Background_Decoar">
               <group name="Background_Buildings">
-                <mesh
-                  name="UFO"
-                  geometry={nodes.UFO.geometry}
-                  material={materials.city_tex}
-                  position={[0, 31, -1]}
-                  scale={0.691}
-                />
+                <group ref={ufoRef} position={[-5, 31, -20]}>
+                  <mesh
+                    name="UFO"
+                    geometry={nodes.UFO.geometry}
+                    material={materials.city_tex}
+                    position={[0, 0, 0]}
+                    scale={0.691}
+                  />
+                  <UFOBeam />
+                </group>
                 <mesh
                   name="Background_Building_1"
                   geometry={nodes.Background_Building_1.geometry}

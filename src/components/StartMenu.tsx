@@ -155,7 +155,7 @@ export default function ZombieInvasionMenu({
             Press Tab Key to pause during gameplay
           </p>
           <p className="mt-1 text-xs text-gray-500">
-            © 2025 Zombie Invasion - Abdul Rehman. All rights reserved.
+            © 2025 Zombie Invasion - Alya, Indhira, Lilip. All rights reserved.
           </p>
         </div>
       </div>

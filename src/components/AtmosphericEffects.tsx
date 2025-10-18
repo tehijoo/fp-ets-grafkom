@@ -70,7 +70,7 @@ export const FloatingParticles: React.FC = (): React.JSX.Element => {
 const AtmosphericEffects: React.FC = (): React.JSX.Element => {
   return (
     <>
-      <UFOBeam />
+      {/* <UFOBeam /> */}
       <FloatingParticles />
     </>
   );
