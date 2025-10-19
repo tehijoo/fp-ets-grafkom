@@ -1,7 +1,7 @@
 # 👮 Misi Detektif
 
-![Zombie Invasion Banner](https://github.com/user-attachments/assets/7dfb33f0-33c1-4bfc-9232-752f9e372303)
-![Zombie Invasion Banner](https://github.com/user-attachments/assets/8d7cbefa-d84d-4b85-9dce-87803e54d649)
+<img width="1919" height="909" alt="image" src="https://github.com/user-attachments/assets/b345b9ff-874d-44d1-81c4-7ad80d948428" />
+<img width="1914" height="913" alt="image" src="https://github.com/user-attachments/assets/8723ad3c-a2a8-4371-b4f7-707e3053e552" />
 
 Sebuah game petualangan 3D berbasis web yang imersif, dibangun menggunakan React, Three.js, dan React Three Fiber. Berperan sebagai seorang detektif yang diturunkan secara misterius oleh UFO, Anda harus menjelajahi kota, memecahkan teka-teki, dan menguji kecerdasan Anda untuk mengungkap misteri yang ada.
 
@@ -13,6 +13,8 @@ Sebuah game petualangan 3D berbasis web yang imersif, dibangun menggunakan React
 
 - **Lingkungan 3D Imersif**: Jelajahi kota yang detail dengan gedung-gedung unik, jalanan dengan mobil-mobil, dan efek atmosfer yang memukau.
 - **Mekanik Kuis Detektif**: Temukan kotak-kotak misterius yang berisi pertanyaan. Jawab dengan benar untuk mendapatkan poin dan petunjuk ke lokasi selanjutnya.
+  <img width="1916" height="913" alt="image" src="https://github.com/user-attachments/assets/dbd5de30-6e21-421f-b439-bd116c41649d" />
+  <img width="1919" height="911" alt="image" src="https://github.com/user-attachments/assets/fc4af076-900f-4e0c-94b1-9eb8aeaa1f5e" />
 - **Intro Sinematik**: Mulailah permainan dengan adegan pembuka di mana karakter Anda diturunkan dari UFO yang kemudian terbang menjauh.
 - **Efek Atmosferik**:
   - UFO dinamis dengan sorotan cahaya beranimasi
