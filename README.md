@@ -1,129 +1,110 @@
-# 🧟 Zombie Invasion Game
+# 👮 Misi Detektif
 
 ![Zombie Invasion Banner](https://github.com/user-attachments/assets/7dfb33f0-33c1-4bfc-9232-752f9e372303)
 ![Zombie Invasion Banner](https://github.com/user-attachments/assets/8d7cbefa-d84d-4b85-9dce-87803e54d649)
 
-A thrilling 3D zombie survival game built with React, Three.js, and React Three Fiber. Navigate through a post-apocalyptic city environment while avoiding zombie hordes in this immersive web-based game.
+Sebuah game petualangan 3D berbasis web yang imersif, dibangun menggunakan React, Three.js, dan React Three Fiber. Berperan sebagai seorang detektif yang diturunkan secara misterius oleh UFO, Anda harus menjelajahi kota, memecahkan teka-teki, dan menguji kecerdasan Anda untuk mengungkap misteri yang ada.
 
 ## 🎮 Live Demo
 
-[Play the Game](http://zombie-invasion-three.vercel.app/)
+[Play the Game]
 
-## ✨ Features
+## ✨ Fitur Utama
 
-- **Immersive 3D Environment**: Explore a detailed city environment with buildings, cars, and atmospheric effects
-- **Realistic Physics**: Powered by React Three Rapier for authentic movement and collisions
-- **Character Controls**: Smooth character movement with walking, running, jumping, and combat animations
-- **Atmospheric Effects**:
-  - Dynamic UFO with animated beam
-  - Floating particles
-  - Fog effects
-  - Ambient lighting
-- **Sound Design**: Background music and positional audio for enhanced immersion
-- **Mobile Support**: Touch controls with on-screen joystick for mobile devices
-- **Performance Options**: Toggle shadows and FPS counter for optimal performance
-- **Pakistani Theme**: Features Pakistani flags in the environment
+- **Lingkungan 3D Imersif**: Jelajahi kota yang detail dengan gedung-gedung unik, jalanan dengan mobil-mobil, dan efek atmosfer yang memukau.
+- **Mekanik Kuis Detektif**: Temukan kotak-kotak misterius yang berisi pertanyaan. Jawab dengan benar untuk mendapatkan poin dan petunjuk ke lokasi selanjutnya.
+- **Intro Sinematik**: Mulailah permainan dengan adegan pembuka di mana karakter Anda diturunkan dari UFO yang kemudian terbang menjauh.
+- **Efek Atmosferik**:
+  - UFO dinamis dengan sorotan cahaya beranimasi
+  - Partikel yang melayang untuk menambah suasana
+  - Efek kabut yang memberikan kedalaman visual
+  - Pencahayaan ambien untuk memperkuat nuansa kota.
+- **Desain Suara**: Musik latar dan audio posisional untuk pengalaman yang lebih imersif.
+- **Opsi Performa**: Opsi untuk mengaktifkan/menonaktifkan bayangan dan penghitung FPS demi performa yang optimal.
+- **Kontrol Karakter Modern**: Kontrol karakter yang mulus dengan kemampuan berjalan, berlari, menendang, memukul dan melompat
+- **Fisika Realistis**: Ditenagai oleh React Three Rapier untuk pergerakan dan tabrakan yang otentik.
 
-## 🚀 Technologies Used
+## 🚀 Teknologi yang Digunakan
 
-- **React** (v19.1.0) - UI framework
-- **Three.js** (v0.177.0) - 3D graphics library
-- **React Three Fiber** - React renderer for Three.js
-- **React Three Drei** - Useful helpers for React Three Fiber
-- **React Three Rapier** - Physics engine integration
-- **TypeScript** - Type safety and better developer experience
-- **Vite** - Fast build tool and development server
-- **Tailwind CSS** - Utility-first CSS framework
-- **Ecctrl** - Character controller for Three.js
+- **React** - Framework UI untuk membangun antarmuka.
+- **Three.js** - Pustaka grafis 3D untuk rendering di web.
+- **React Three Fiber** - Renderer React untuk Three.js, membuat dunia 3D menjadi lebih mudah dikelola.
+- **React Three Drei** - Kumpulan helper dan abstraksi yang sangat berguna untuk React Three Fiber.
+- **React Three Rapier** - Integrasi mesin fisika untuk interaksi yang realistis.
+- **Ecctrl** - Kontroler karakter siap pakai untuk pergerakan yang mulus.
+- **Zustand** - Manajemen state yang ringan untuk skor, petunjuk, dan logika game.
+- **Vite** - Build tool modern yang super cepat.
+- **TypeScript** - Untuk kode yang lebih aman dan mudah dikelola.
+- **Tailwind CSS** - Framework CSS untuk membangun UI dengan cepat.
 
-## 🎯 Getting Started
+## 🎯 Cara Memulai
 
-### Prerequisites
+### Prasyarat
 
-- Node.js (v14 or higher)
+- Node.js (v14 atau lebih tinggi)
 - npm or yarn
 
-### Installation
+### Instalasi
 
-1. Clone the repository:
+1. Clone repository ini:
 
 ```bash
-git clone https://github.com/abdulrehmanwaseem/3d-Zombie-Invasion-Game.git
-cd 3d-Zombie-Invasion-Game
+git clone https://github.com/tehijoo/fp-ets-grafkom.git
+cd fp-ets-grafkom
 ```
 
-2. Install dependencies:
+2. Install semua paket yang dibutuhkan:
 
 ```bash
 npm install
 ```
 
-3. Start the development server:
+3. Jalankan server pengembangan:
 
 ```bash
 npm run dev
 ```
 
-4. Open your browser and navigate to `http://localhost:5173`
+4. Buka browser Anda dan navigasi ke `http://localhost:5173`
 
-### Building for Production
 
-```bash
-npm run build
-```
-
-The build output will be in the `dist` directory.
-
-## 🎮 Controls
+## 🎮 Kontrol
 
 ### Keyboard Controls
 
-| Action        | Keys       |
+| Aksi          | Tombol Keyboard      |
 | ------------- | ---------- |
-| **Movement**  |            |
-| Move Forward  | `W` or `↑` |
-| Move Backward | `S` or `↓` |
-| Move Left     | `A` or `←` |
-| Move Right    | `D` or `→` |
-| Jump          | `Space`    |
-| Run/Sprint    | `Shift`    |
-| **Combat**    |            |
-| Melee Attack  | `F`        |
-| Kick Attack   | `E`        |
-| **Other**     |            |
-| Emote         | `1`        |
-| Pause Menu    | `Tab`      |
+| **Gerakan**   |            |
+| Gerak Maju    | `W` or `↑` |
+| Gerak Mundur  | `S` or `↓` |
+| Gerak Kiri    | `A` or `←` |
+| Gerak Kanan   | `D` or `→` |
+| Lompak        | `Space`    |
+| Lari/Sprint   | `Shift`    |
+| **Serang**    |            |
+| Meninju       | `F`        |
+| Menendang     | `E`        |
+| **Lainnya**   |            |
+| Emoji         | `1`        |
+| Tombol Pause  | `Tab`      |
 
-### Mobile Controls
 
-- Use the on-screen joystick for movement
-- Touch buttons for actions
+## 🛠️ Konfigurasi
 
-## 🛠️ Configuration
+### Pengaturan Grafik
 
-### Graphics Settings
+Kamu bisa menyesuaikan pengaturan yang ada di game:
 
-You can adjust the following settings in-game:
-
-- **Shadows**: Toggle shadow rendering for better performance
-- **FPS Counter**: Show/hide performance statistics
-
-Access settings from the main menu or press `Tab` during gameplay.
+- **Shadows**: Toggle shadow rendering untuk performa yang lebih realistis
+- **FPS Counter**: Lihat/Sembunyi statistika performa
 
 ## 📁 Project Structure
 
 ```
-zombie-invasion-game/
-├── public/
-│   ├── models/          # 3D models and textures
-│   │   ├── character.glb
-│   │   ├── invasion_environment.glb
-│   │   ├── pakistan_flag.glb
-│   │   └── Textures/
-│   ├── images/          # UI images
-│   └── sounds/          # Audio files
+fp-ets-grafkom/
+├── public/              # Aset 3D, gambar dan suara
 ├── src/
-│   ├── components/      # React components
+│   ├── components/      # Komponen React & Three.js
 │   │   ├── AtmosphericEffects.tsx
 │   │   ├── Character.tsx
 │   │   ├── ControlsModal.tsx
@@ -133,7 +114,7 @@ zombie-invasion-game/
 │   │   ├── SettingsModal.tsx
 │   │   ├── StartMenu.tsx
 │   │   └── ZombieLoadingScreen.tsx
-│   ├── data/           # Configuration files
+│   ├── data/          
 │   │   ├── animationSet.json
 │   │   └── keyboardMap.json
 │   ├── App.tsx
@@ -143,80 +124,3 @@ zombie-invasion-game/
 ├── tsconfig.json
 └── vite.config.ts
 ```
-
-## 🎨 Features in Detail
-
-### Environment
-
-- Detailed city environment with multiple buildings
-- Police station centerpiece
-- Scattered vehicles and urban props
-- Dynamic billboards with game branding
-
-### Visual Effects
-
-- UFO hovering above the city with animated beam
-- Floating particle system
-- Atmospheric fog
-- Dynamic lighting including ambient, directional, and spot lights
-
-### Character System
-
-- Animated character with multiple actions
-- Smooth transitions between animations
-- Physics-based movement
-- Combat system with melee and kick attacks
-
-## 🔧 Development
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run lint` - Run ESLint
-- `npm run preview` - Preview production build
-
-### Adding New Features
-
-1. **New 3D Models**: Place `.glb` files in `public/models/`
-2. **New Animations**: Update `src/data/animationSet.json`
-3. **New Controls**: Modify `src/data/keyboardMap.json`
-4. **New Components**: Add to `src/components/`
-
-## 🐛 Known Issues
-
-- Performance may vary on lower-end devices
-- Mobile controls might need adjustment based on screen size
-- Some animations may not trigger correctly on rapid input
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👏 Credits
-
-- **Developer**: Abdul Rehman
-- **3D Models**: Custom and community assets
-- **Sound Effects**: Background ambience and effects
-- **Inspiration**: Classic zombie survival games
-
-## 📞 Contact
-
-Abdul Rehman - [GitHub Profile](https://github.com/abdulrehmanwaseem)
-
-Project Link: [https://github.com/abdulrehmanwaseem/3d-Zombie-Invasion-Game](https://github.com/abdulrehmanwaseem/3d-Zombie-Invasion-Game)
-
----
-
-<p align="center">Made with ❤️ by Abdul Rehman</p>
-<p align="center">© 2025 Zombie Invasion. All rights reserved.</p>
